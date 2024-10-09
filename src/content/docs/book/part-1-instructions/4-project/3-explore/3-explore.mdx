@@ -93,3 +93,82 @@ Create a graphical application that gets the user to indicate the midpoint betwe
 - Draw two random circles (of fixed size)
 - Get the coordinate the user clicks, and output how far off they were for both the x and y coordinate in the test. Keep a sum of these two differences so that you can output a summary at the end.
 - Print the average x and y offsets at the end of the program, after the indicated number of tests. 
+
+### Raspberry Pi Activity: Morse Code Initials with LED
+
+---
+
+**Title:** Create a Morse Code Generator for Your Initials
+
+**Objective:**  
+- Use an **LED** and a **button** to simulate Morse code and print your initials in Morse code using only **if-else** control flow statements.
+
+---
+
+**Task Overview:**  
+In this activity, you will create a program that translates your initials into Morse code and "prints" them using an LED. Each time a button is pressed, the program will generate the Morse code for the next letter of your initials. The LED will blink according to the dot-dash Morse code system, using short and long blinks to represent dots and dashes, respectively.
+
+---
+
+**Task Breakdown**:
+
+1. **Set up the Hardware**:  
+   - **LED**: This will blink in patterns to represent Morse code.  
+   - **Button**: The user presses this to cycle through the Morse code for each initial.
+
+2. **Morse Code Setup**:  
+   - Define the Morse code patterns for the initials (e.g., `A = ".-"`, `B = "-..."`, etc.). Only use **if-else** statements to determine which pattern to blink based on the current initial. You can visit [Morse Code Online Translator](https://morsecode.world/international/translator.html) to simply translate your initials.
+   - Use a short blink (e.g., 200ms) for dots and a longer blink (e.g., 600ms) for dashes.
+
+3. **Control Flow**:  
+   - Implement **if-else** logic to handle each initial separately and blink the LED in the corresponding Morse code pattern.
+   - After each button press, the system should display the Morse code for the next letter.
+
+4. **Cycle Through Initials**:  
+   - Once all initials have been displayed, the program should reset and start again.
+
+---
+
+**Example Steps for Printing Initials**:
+
+1. **LED Blinking Rules**:  
+   - **Dot**: 200ms blink  
+   - **Dash**: 600ms blink  
+   - **Gap between letters**: 1 second delay
+
+2. **Morse Code Example (for initials A.B.)**:  
+   - **A**: `.-` (dot, dash)  
+   - **B**: `-...` (dash, dot, dot, dot)
+
+---
+
+**Steps for Each Test**:
+
+- When the user presses the button, the LED will blink according to the Morse code for the next initial.  
+- The LED will first blink the dots and dashes for the current letter, then wait for 1 second before the next letter.  
+- After displaying all initials, the program will loop back to the first letter.
+
+---
+
+**Hardware Required**:
+- Raspberry Pi  
+- 1 LED  
+- 1 Push button  
+- 220Ω Resistor  
+- Breadboard and jumper wires
+
+---
+
+#### Code Flow (Pseudocode for Activity):
+
+```plaintext
+- Initialize GPIO for button and LED.
+- Set up Morse code patterns for each initial using if-else.
+- When the button is pressed:
+   - Check which initial needs to be displayed.
+   - Blink the LED in the corresponding Morse code pattern.
+   - After blinking, move to the next initial.
+   - If all initials are displayed, reset to the first initial.
+```
+
+---

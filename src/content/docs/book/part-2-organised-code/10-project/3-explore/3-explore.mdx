@@ -44,3 +44,79 @@ Your program needs to:
 - Moving onto a Grass tile should have a 10% chance to give a coin to the player
 - Moving onto a Dessert tile should have a 5% chance to take a coin away from the player
 - The game should end upon collecting 15 coins
+
+### Music Player using Raspberry Pi
+
+---
+
+**Title:** Build a Functional Music Player with Playlists and User Controls
+
+---
+
+**Objective:**  
+- Apply the programming concepts you've learned to create a complete, functional music player using SplashKit. The player should integrate a user interface, button controls, playlist management, and audio playback.
+
+---
+
+**Task Overview:**  
+In this project, you will build a music player that can play, pause, and navigate through a playlist of songs. Users will interact with the system through physical buttons, and a display will provide feedback, such as showing the current song and available controls. The project will test your ability to work with file reading, control flow, dynamic memory, and user interaction.
+
+---
+
+**Task Breakdown**:
+
+1. **Set up the Hardware**:  
+   - Connect **buttons** (for play, pause, next, previous, and volume control).  
+   - Set up a **display** (e.g., LCD or console) to show current song information.  
+   - Integrate a **speaker** or audio output for playing the songs.
+
+2. **Playlist Management**:  
+   - Create a **dynamic array** to store a list of songs (file paths and song titles).
+   - The player should be able to handle an unlimited number of songs and update the playlist dynamically (e.g., allow the user to add or remove songs).
+
+3. **Audio Playback**:  
+   - Implement file reading to access and play music files using SplashKit's audio functions.
+   - Use **loops** and **conditional statements** to control playback (play, pause, stop, next, previous).
+   - Ensure that playback continues in a loop unless the user stops the song or navigates to the next one.
+
+4. **Button Control**:  
+   - Use **physical buttons** to control the music player:
+     - **Play/Pause**: Start or pause the current song.
+     - **Next/Previous**: Navigate through the playlist.
+     - **Volume Control**: Adjust the volume using additional buttons or a knob.
+     - **Stop**: Stop the current song.
+
+5. **Display Interface**:  
+   - Create a simple **menu system** on the display to show current song, playlist, and control options.
+   - When a song is playing, show the song name, playback status (playing/paused), and volume level.
+   - The menu should allow users to navigate and select songs from the playlist.
+
+6. **Error Handling**:  
+   - Handle edge cases, such as when the playlist is empty, or a song file cannot be found.
+   - Implement checks for the end of the playlist and allow the user to loop back to the beginning.
+
+7. **Optional Enhancements**:  
+   - Implement a **shuffle** feature to randomly play songs from the playlist.
+   - Add support for **different audio formats** (e.g., MP3, WAV).
+   - Implement a **visual equalizer** or volume bars on the display for a more interactive experience.
+
+---
+
+**Additional Information**:  
+- This project integrates file handling, dynamic memory, hardware control (buttons and display), and SplashKit's audio functions.
+- Think about how you will organize the program into **classes** and **functions** to handle tasks like reading files, playing songs, and updating the display.
+- Ensure proper handling of **user input** and create a seamless interaction between the physical controls and the software.
+
+---
+
+**Hardware Required**:
+- Raspberry Pi  
+- 5 Buttons (Play/Pause, Next, Previous, Volume Up, Volume Down)  
+- LCD/Console Display  
+- Speaker or Audio Output  
+- Breadboard and jumper wires  
+
+---
+
+**Final Notes**:  
+This task requires you to integrate multiple programming concepts into a cohesive system. The music player should be user-friendly and robust, capable of handling a variety of tasks, from file reading and playback to user interaction and playlist management.
