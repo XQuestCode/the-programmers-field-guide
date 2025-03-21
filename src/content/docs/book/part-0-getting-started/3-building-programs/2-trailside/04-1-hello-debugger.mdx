@@ -41,6 +41,36 @@ Practicing debugging in VS Code
 With SplashKit!
 ```
 
+:::note[Using MSYS2/MINGW64?]
+If you are using MSYS2/MINGW64, and get warnings with the code above, you can download/save these [Resources](/resources/code-examples/part-0/HelloDebuggerResources.zip).
+
+Unzip the zip file, click into the `HelloDebuggerResources` folder, and then copy the `Resources` folder into your project folder.
+
+Then copy the following code into your Program.cs file:
+
+```cs
+using static SplashKitSDK.SplashKit;
+
+// download resources from online source
+LoadBitmap("sk-github-logo", "sk-github-logo.png");
+LoadFont("roboto-italic", "Roboto-Italic.ttf");
+
+// terminal text output
+WriteLine("Practicing debugging in VS Code");
+WriteLine("With SplashKit!");
+
+// simple gui window
+OpenWindow("SplashKit!", 400, 500);
+ClearScreen(RGBColor(250, 250, 250));
+DrawBitmap("sk-github-logo", 0, 0);
+RefreshScreen();
+DrawText("SplashKit!", ColorBlack(), "roboto-italic", 50, 90, 410);
+RefreshScreen();
+Delay(5000);
+```
+
+:::
+
 ## VS Code Debugger
 
 When you run the VS Code debugger in a C# project for the first time, you will need to set up the 'Run and Debug' configuration. To do this, follow the steps below:
@@ -134,10 +164,11 @@ Prefer to follow a video? We've got you covered!
 </div>
 
 In this video we demonstrate how to:
+
 1. Create a C# project
 2. Setup the 'Run and Debug' configuration, so you can get started with the debugger!
 
-### Debugging with breakpoints
+### Debugging with breakpoints Video
 
 <div class="not-content">
   <YouTube id="M_b601gHu2g" params="fs=1&modestbranding=1&rel=0&autoplay=1"/>

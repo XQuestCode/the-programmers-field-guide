@@ -59,14 +59,20 @@ For example, with the username "**default-user**", your terminal would look like
 You can see in the image above where the "**default-user**" username was first entered (shown in the pink box), and the same username being used with the terminal prompt (shown in the orange box).
 
 :::tip[Troubleshooting tip:]
-If you have issues installing the WSL with Ubuntu, go to the [Issues creating Ubuntu user account](/book/appendix/0-installation/3-0-troubleshooting-install/#issues-creating-ubuntu-user-account) section in the Installation Troubleshooting page for a way to reset the Ubuntu installation and user account setup.
+If you have issues installing the WSL with Ubuntu, go to the [Issues creating Ubuntu user account](https://splashkit.io/troubleshoot/windows-wsl/wsl-issue-1/) page on the SplashKit website for a way to reset the Ubuntu installation and user account setup.
 :::
 
 WSL is now setup and ready to use!
 
+:::note[Opening WSL Terminal]
+To open a terminal for your WSL, search for "Ubuntu", and click the Ubuntu App (green box below):
+
+![Open Ubuntu Terminal](./images/setup-windows/ubuntu-terminal-open.png)
+:::
+
 ### Configure 'Windows Terminal'
 
-Note: This step is *optional*.
+Note: This step is *optional*, but encouraged.
 
 If you want to be able to have your 'Windows **Terminal**' app automatically open with WSL, you can change the *Default profile* to use WSL (with Ubuntu) using the steps below:
 
@@ -101,14 +107,9 @@ To make it easier to open each time, you can pin your Terminal to the Taskbar.
 
 ## Automated Setup
 
-:::caution[Install VS Code first!]
-Before running the automated installation script command below, it is strongly recommended that you install Visual Studio Code directly in Windows first (rather than inside WSL).
-
-Go to Step [4. Install Visual Studio Code](#4-install-visual-studio-code) then come back to this section.
-:::
-
 This script will install the following applications and tools:
 
+- Visual Studio Code
 - Visual Studio Code Extensions
   - C/C++ Extensions
   - C# Extensions
@@ -123,7 +124,15 @@ This script will install the following applications and tools:
 - g++
 - gdb
 
-Open the Ubuntu Terminal and run the following command:
+:::caution[Uninstall SplashKit in MSYS2 if it has been installed]
+Before running the automated script below, make sure to **uninstall SplashKit in the MSYS2/MINGW64 terminal** if you have installed it there.
+
+You can uninstall SplashKit using the command: `skm uninstall`.
+
+This will ensure the automated script below does not try to use the `.splashkit` folder inside the MSYS2 folders accidentally.
+:::
+
+Open the **Ubuntu** Terminal and run the following command:
 
 ```bash
 curl -s "https://programmers.guide/resources/WSL_InstallScript.sh" | bash /dev/stdin
@@ -192,7 +201,7 @@ bash <(curl -s https://raw.githubusercontent.com/splashkit/skm/master/install-sc
 <div class="caption">Image not subject to The Programmer's Field Guide <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 License</a></div>
 
 :::tip[Troubleshooting tip:]
-If you have issues installing the SplashKit SDK, go to the [No response when running SplashKit installation command](/book/appendix/0-installation/3-0-troubleshooting-install/#no-response-when-running-splashkit-installation-command) section in the Installation Troubleshooting page for an alternative installation process.
+If you have issues installing the SplashKit SDK, go to [this troubleshooting page](https://splashkit.io/troubleshoot/linux/linux-issue-1/) on the SplashKit website for an alternative installation process.
 :::
 
 Close and reopen the WSL Terminal, then run the command below to build SplashKit:
@@ -348,6 +357,9 @@ If you have been working on your projects in WSL, you can access these from Wind
 One convenient way of accessing your files is to run the `explorer.exe` program from within your WSL terminal. When you do this, you can open a File Explorer and give it a path to open. Running the following commands at the WSL Terminal will let me open my Linux Documents folder in File Explorer.
 
 ```bash
+# Create Documents folder
+mkdir ~/Documents
+
 # Move to my Documents folder in Linux
 cd ~/Documents
 
@@ -356,3 +368,23 @@ explorer.exe .
 ```
 
 Using this option you can work within your Linux files for your programming projects, and then access these from the File Explorer when needed.
+
+### Accessing WSL Files in File Explorer
+
+*Follow the instructions below to access your WSL folders and files in File Explorer*:
+
+In the left sidebar panel, scroll to the bottom and click on the "Linux" folder (red box below), then navigated into the "Ubuntu" folder (orange box below):
+
+![Initial navigation to WSL Folder in File Explorer](./images/setup-windows/wsl-file-explorer-ubuntu.png)
+
+Next, go into the "home" folder (red box below):
+
+![Navigation to WSL home folder in File Explorer](./images/setup-windows/wsl-file-explorer-home.png)
+
+You will then see a folder with the username that you used to create your WSL/Ubuntu account. Click into this folder to see your WSL folders and files.
+
+:::note
+This is the *home* (~) directory for WSL, which is the location that your Ubuntu terminal will start in when you open a new terminal.
+
+Also, if you have issues and need to reinstall/recreate your Ubuntu account, these folders and files will be removed. Make sure to create a backup of any important folders/files beforehand.
+:::

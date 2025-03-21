@@ -10,10 +10,6 @@ dotnet_sdk_url="https://download.visualstudio.microsoft.com/download/pr/90486d8a
 vscode_installer_url="https://aka.ms/win32-x64-user-stable"
 settings_json_url="https://programmers.guide/resources/msys2-settings.json"
 
-# Define paths
-SETTINGS_JSON_PATH="$APPDATA/Code/User"
-VSCODE_PATH=`cd $LOCALAPPDATA/Programs/Microsoft\ VS\ Code/bin; pwd` #VS Code path to 'code' (to avoid need for restarting shell)
-
 # -----------------------------------------------------
 # 1. Update and Install required packages
 # -----------------------------------------------------
@@ -40,9 +36,9 @@ fi
 
 export PATH=$PATH:~/.splashkit
 
-if [ -d ~/.splashkit/global ]; then
-    echo "Installing SplashKit global"
-    skm global install
+if [ -d ~/.splashkit/windows ]; then
+    echo "Installing Windows dependencies"
+    skm windows install
 fi
 
 # -----------------------------------------------------
@@ -81,7 +77,7 @@ fi
 # 4. Install Visual Studio Code
 # -----------------------------------------------------
 
-# Check if VS Code is installed
+# Check if VS Code needs to be installed
 if ! command -v code &> /dev/null
 then
     echo "Downloading Visual Studio Code installer..."
@@ -98,6 +94,10 @@ else
     echo "Visual Studio Code is already installed."
 fi
 
+# Define paths
+SETTINGS_JSON_PATH="$APPDATA/Code/User"
+VSCODE_PATH=`cd $LOCALAPPDATA/Programs/Microsoft\ VS\ Code/bin; pwd` #VS Code path to 'code' (to avoid need for restarting shell)
+
 # -----------------------------------------------------
 # 5. Replace settings.json file if empty
 # -----------------------------------------------------
@@ -106,17 +106,17 @@ echo ""
 echo "Checking VS Code settings.json file size..."
 cd $SETTINGS_JSON_PATH
  
-# empty settings = ~3 bytes
-if [ $(wc -c < "settings.json") -le 3 ]; then
+# empty settings = <= 5 bytes
+if [ $(wc -c < "settings.json") -le 5 ]; then
     echo "Adding MSYS2/MINGW64 terminal settings to settings.json file..."
  
     curl -O "$settings_json_url"
     mv msys2-settings.json settings.json
 else
-    echo "Cannot add MSYS2/MINGW64 settings to VS Code settings.json file."
-    echo "You will need to update file manually."
+    echo "Cannot add MSYS2/MINGW64 terminal settings to VS Code settings.json file."
+    echo "You will need to update settings.json file manually."
 fi
- 
+
 cd ~
 
 # -----------------------------------------------------
@@ -157,18 +157,6 @@ if command -v "$VSCODE_PATH/code" &> /dev/null; then
         "$VSCODE_PATH/code" --install-extension ms-dotnettools.vscodeintellicode-csharp
     fi
 fi
-
-# -----------------------------------------------------
-# 7. Update HOME path to Windows folder 
-# -----------------------------------------------------
-
-echo ""
-echo "Updating HOME (~) path..."
-
-echo 'HOME="/c/Users/$(whoami)"' >> ~/.bashrc
-source ~/.bashrc
-
-echo "HOME (~) path now set to $HOME"
 
 # -----------------------------------------------------
 
